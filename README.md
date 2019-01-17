@@ -49,3 +49,9 @@ docker logs -f kong-oidc_kong_1
 docker-compose build kong
 docker-compose up -d kong
 ```
+
+启动 kong-dashboard，可视化管理界面
+```
+HOST_IP=$(ipconfig getifaddr en0) # MacOS
+docker run --rm -p 8080:8080 pgbi/kong-dashboard start --kong-url http://${HOST_IP}:8001
+```
