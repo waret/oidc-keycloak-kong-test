@@ -1,0 +1,6 @@
+[submodule "lua-resty-openidc"]
+	path = lua-resty-openidc
+	url = https://github.com/zmartzone/lua-resty-openidc.git
+[submodule "kong-oidc"]
+	path = kong-oidc
+	url = https://github.com/waret/kong-oidc.git
