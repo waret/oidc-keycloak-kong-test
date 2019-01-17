@@ -1,5 +1,12 @@
 
 
+克隆代码库到本地。
+```
+git checkout https://github.com/waret/kong-oidc-test.git kong-oidc-test
+cd kong-oidc-test
+git submoudule update
+```
+
 ```
 # 构建带插件的镜像
 docker build . -t kong:0.14.1-centos-oidc
