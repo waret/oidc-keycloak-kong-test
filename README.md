@@ -36,7 +36,7 @@ Kong: [http://localhost:8000](http://localhost:8000)
 
 !["导入Realm"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-realm.png "导入Realm")
 
-!["导入Users"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-user.png "导入Users")
+!["导入Users"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-users.png "导入Users")
 
 
 注册插件：
