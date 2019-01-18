@@ -51,6 +51,8 @@ services:
 
   kong-dashboard:
     image: pgbi/kong-dashboard:v3.5.0
+    depends_on:
+      - kong
     command: start --kong-url http://kong:8001
     networks:
       - kong-net
@@ -60,7 +62,7 @@ services:
   keycloak-db:
     image: postgres:9.6
     volumes: 
-      - keycloak-datastore:/var/lib/postresql/data
+      - keycloak-datastore:/var/lib/postgresql/data
     networks:
       - keycloak-net
     ports:
