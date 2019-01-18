@@ -10,7 +10,6 @@ git submoudule update
 构建并启动服务：
 ```
 # 构建带插件的镜像
-docker build . -t kong:0.14.1-centos-oidc
 docker-compose build kong
 # 启动数据库
 docker-compose up -d kong-db
