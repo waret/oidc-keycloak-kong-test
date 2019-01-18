@@ -34,7 +34,7 @@ curl -s -X POST http://localhost:8001/plugins \
   | python -mjson.tool
 ```
 
-注册服务和路由信息，访问地址为 http://localhost:8000/：
+注册服务和路由信息，访问地址为 [http://localhost:8000/](http://localhost:8000)：
 ```
 HOST_IP=$(ipconfig getifaddr en0)
 a=$(curl -s -X POST http://localhost:8001/services \
@@ -48,14 +48,13 @@ curl -s -X POST http://localhost:8001/routes \
     | python -mjson.tool
 ```
 
-注册服务和路由信息，访问地址为 http:/mock-service/：
+注册服务和路由信息，访问地址为 [http://mock-service/](http://mock-service/)：
 ```
 a=$(curl -s -X POST http://localhost:8001/services \
     -d name=mock-service \
     -d url=http://mockbin.org/request); \
     echo $a | python -mjson.tool; \
     svcid=$(echo $a | jq .id | tee | awk -F\" '{print $2}')
-# 注册路由
 curl -s -X POST http://localhost:8001/routes \
     -d service.id=${svcid} \
     -d hosts=mock-service
@@ -74,5 +73,7 @@ docker-compose up -d kong
 在浏览器里打开 http://localhost:8000/ 页面，测试结果。
 
 Kong Dashboard: [http://localhost:8280](http://localhost:8280)
+
 Keycloak Dashboard: [http://localhost:8180](http://localhost:8180)
+
 Kong: [http://localhost:8000](http://localhost:8000)
