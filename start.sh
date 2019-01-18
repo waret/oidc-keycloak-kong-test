@@ -6,3 +6,5 @@ sleep 1
 docker-compose run --rm kong kong migrations up
 sleep 1
 docker-compose up
+sleep 1
+docker-compose ps
