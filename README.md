@@ -26,11 +26,12 @@ curl -s http://localhost:8001 | jq .plugins.available_on_server.oidc
 
 注册插件：
 ```
+HOST_IP=$(ipconfig getifaddr en0)
 curl -s -X POST http://localhost:8001/plugins \
   -d name=oidc \
   -d config.client_id=web_app \
   -d config.client_secret=web_app \
-  -d config.discovery=http://keycloak.10.20.1.72.nip.io/auth/realms/jhipster/.well-known/openid-configuration \
+  -d config.discovery=http://${HOST_IP:8180}/auth/realms/jhipster/.well-known/openid-configuration \
   | python -mjson.tool
 ```
 
