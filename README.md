@@ -70,8 +70,6 @@ docker-compose build kong
 docker-compose up -d kong
 ```
 
-在浏览器里打开 http://localhost:8000/ 页面，测试结果。
-
 Kong Dashboard: [http://localhost:8280](http://localhost:8280)
 
 Keycloak Dashboard: [http://localhost:8180](http://localhost:8180)
