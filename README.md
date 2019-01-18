@@ -1,6 +1,6 @@
 
 
-克隆代码库到本地。
+克隆代码库到本地：
 ```
 git checkout https://github.com/waret/kong-oidc-test.git kong-oidc-test
 cd kong-oidc-test
@@ -20,6 +20,17 @@ docker-compose up -d kong
 docker-compose ps
 # 查看是否启动 oidc 插件
 curl -s http://localhost:8001 | jq .plugins.available_on_server.oidc
+# 注册插件
+curl -s -X POST http://localhost:8001/plugins \
+  -d name=oidc \
+  -d config.client_id=web_app \
+  -d config.client_secret=web_app \
+  -d config.discovery=http://keycloak.10.20.1.72.nip.io/auth/realms/jhipster/.well-known/openid-configuration \
+  | python -mjson.tool
+```
+
+
+```
 # 注册服务
 a=$(curl -s -X POST http://localhost:8001/services \
     -d name=mock-service \
@@ -30,13 +41,10 @@ a=$(curl -s -X POST http://localhost:8001/services \
 curl -s -X POST http://localhost:8001/routes \
     -d service.id=${svcid} \
     -d paths[]=/ | python -mjson.tool
-# 注册插件
-curl -s -X POST http://localhost:8001/plugins \
-  -d name=oidc \
-  -d config.client_id=web_app \
-  -d config.client_secret=web_app \
-  -d config.discovery=http://keycloak.10.20.1.72.nip.io/auth/realms/jhipster/.well-known/openid-configuration \
-  | python -mjson.tool
+```
+
+调试
+```
 # 查看日志
 docker logs -f kong-oidc_kong_1
 ```
@@ -50,8 +58,16 @@ docker-compose build kong
 docker-compose up -d kong
 ```
 
-启动 kong-dashboard，可视化管理界面
+注册本地服务
 ```
-HOST_IP=$(ipconfig getifaddr en0) # MacOS
-docker run --rm -p 8080:8080 pgbi/kong-dashboard start --kong-url http://${HOST_IP}:8001
+HOST_IP=$(ipconfig getifaddr en0)
+a=$(curl -s -X POST http://localhost:8001/services \
+    -d name=mock-service \
+    -d url=http://${HOST_IP}:8080); \
+    echo $a | python -mjson.tool; \
+    svcid=$(echo $a | jq .id | awk -F\" '{print $2}')
+curl -s -X POST http://localhost:8001/routes \
+    -d service.id=${svcid} \
+    -d paths[]=/ \
+    | python -mjson.tool
 ```
