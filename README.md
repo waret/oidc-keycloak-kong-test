@@ -24,6 +24,21 @@ docker-compose ps
 curl -s http://localhost:8001 | jq .plugins.available_on_server.oidc
 ```
 
+Kong Dashboard: [http://localhost:8280](http://localhost:8280)
+  Username: admin
+  Password: admin
+
+Keycloak Dashboard: [http://localhost:8180](http://localhost:8180)
+
+Kong: [http://localhost:8000](http://localhost:8000)
+
+导入Realm和User信息：
+
+!["导入Realm"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-realm.png "导入Realm")
+
+!["导入Users"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-user.png "导入Users")
+
+
 注册插件：
 ```
 HOST_IP=$(ipconfig getifaddr en0)
@@ -62,7 +77,7 @@ curl -s -X POST http://localhost:8001/routes \
     -d paths[]=/ | python -mjson.tool
 ```
 
-调试方法
+调试方法：
 ```
 # 查看日志
 docker logs -f kong-oidc_kong_1
@@ -71,8 +86,9 @@ docker-compose build kong
 docker-compose up -d kong
 ```
 
-Kong Dashboard: [http://localhost:8280](http://localhost:8280)
-
-Keycloak Dashboard: [http://localhost:8180](http://localhost:8180)
-
-Kong: [http://localhost:8000](http://localhost:8000)
+清理环境：
+```
+docker-compose rm -s
+docker volum rm kong-oidc_keycloak-datastore kong-oidc_kong-datastore
+docker network rm kong-oidc_keycloak-net kong-oidc_kong-net
+```
