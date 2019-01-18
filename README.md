@@ -38,11 +38,11 @@ curl -s -X POST http://localhost:8001/plugins \
 注册服务和路由信息，访问地址为 [http://localhost:8000/](http://localhost:8000)：
 ```
 HOST_IP=$(ipconfig getifaddr en0)
-a=$(curl -s -X POST http://localhost:8001/services \
+ret=$(curl -s -X POST http://localhost:8001/services \
     -d name=test-service \
     -d url=http://${HOST_IP}:8080); \
-    echo $a | python -mjson.tool; \
-    svcid=$(echo $a | jq .id | awk -F\" '{print $2}')
+    echo $ret | python -mjson.tool; \
+    svcid=$(echo $ret | jq .id | awk -F\" '{print $2}')
 curl -s -X POST http://localhost:8001/routes \
     -d service.id=${svcid} \
     -d paths[]=/ \
@@ -51,14 +51,14 @@ curl -s -X POST http://localhost:8001/routes \
 
 注册服务和路由信息，访问地址为 [http://mock-service/](http://mock-service/)：
 ```
-a=$(curl -s -X POST http://localhost:8001/services \
+ret=$(curl -s -X POST http://localhost:8001/services \
     -d name=mock-service \
     -d url=http://mockbin.org/request); \
-    echo $a | python -mjson.tool; \
-    svcid=$(echo $a | jq .id | tee | awk -F\" '{print $2}')
+    echo $ret | python -mjson.tool; \
+    svcid=$(echo $ret | jq .id | tee | awk -F\" '{print $2}')
 curl -s -X POST http://localhost:8001/routes \
     -d service.id=${svcid} \
-    -d hosts=mock-service
+    -d hosts=mock-service \
     -d paths[]=/ | python -mjson.tool
 ```
 
