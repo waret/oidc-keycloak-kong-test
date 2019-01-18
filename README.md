@@ -32,9 +32,11 @@ Keycloak Dashboard: [http://localhost:8180](http://localhost:8180)
 
 Kong: [http://localhost:8000](http://localhost:8000)
 
-导入Realm和User信息：
+导入Realm信息：
 
 !["导入Realm"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-realm.png "导入Realm")
+
+导入User信息：
 
 !["导入Users"](https://raw.githubusercontent.com/waret/kong-oidc-test/master/assets/image-users.png "导入Users")
 
