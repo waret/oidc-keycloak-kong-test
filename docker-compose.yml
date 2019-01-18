@@ -81,11 +81,12 @@ services:
     ports:
       - "8180:8080"
     environment:
-      DB_VENDOR:   POSTGRES
-      DB_ADDR:     keycloak-db
-      DB_PORT:     5432
-      DB_DATABASE: keycloak
-      DB_USER:     keycloak
-      DB_PASSWORD: keycloak
+      DB_VENDOR:         POSTGRES
+      DB_ADDR:           keycloak-db
+      DB_PORT:           5432
+      DB_DATABASE:       keycloak
+      DB_USER:           keycloak
+      DB_PASSWORD:       keycloak
       KEYCLOAK_USER:     admin
       KEYCLOAK_PASSWORD: admin
+      TZ:                Asia/Shanghai
