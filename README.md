@@ -55,13 +55,22 @@ curl -s -X POST http://localhost:8001/plugins \
 ```
 HOST_IP=$(ipconfig getifaddr en0)
 ret=$(curl -s -X POST http://localhost:8001/services \
-    -d name=test-service \
+    -d name=alice-service \
     -d url=http://${HOST_IP}:8080); \
     echo $ret | python -mjson.tool; \
     svcid=$(echo $ret | jq .id | awk -F\" '{print $2}')
 curl -s -X POST http://localhost:8001/routes \
     -d service.id=${svcid} \
-    -d paths[]=/ \
+    -d paths[]=/alice \
+    | python -mjson.tool
+ret=$(curl -s -X POST http://localhost:8001/services \
+    -d name=bob-service \
+    -d url=http://${HOST_IP}:8081); \
+    echo $ret | python -mjson.tool; \
+    svcid=$(echo $ret | jq .id | awk -F\" '{print $2}')
+curl -s -X POST http://localhost:8001/routes \
+    -d service.id=${svcid} \
+    -d paths[]=/bob \
     | python -mjson.tool
 ```
 
