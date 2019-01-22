@@ -417,7 +417,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "security-admin-console",
       "redirectUris": [
         "/auth/admin/jhipster/console/*"
       ],
@@ -473,7 +473,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "realm-management",
       "redirectUris": [],
       "webOrigins": [],
       "notBefore": 0,
@@ -509,7 +509,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "account",
       "defaultRoles": [
         "view-profile",
         "manage-account"
@@ -552,7 +552,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "broker",
       "redirectUris": [],
       "webOrigins": [],
       "notBefore": 0,
@@ -588,7 +588,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "internal",
       "redirectUris": [],
       "webOrigins": [],
       "notBefore": 0,
@@ -878,7 +878,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "admin-cli",
       "redirectUris": [],
       "webOrigins": [],
       "notBefore": 0,
