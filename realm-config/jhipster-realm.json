@@ -730,7 +730,7 @@
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "web_app"
+      "secret": "web_app",
       "redirectUris": [
         "http://localhost:8000/*",
         "http://localhost:8080/*",
