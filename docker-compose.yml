@@ -95,6 +95,7 @@ services:
     depends_on:
     - keycloak
     - kong-dashboard
+    - kong
     networks:
     - deepmesh-net
     ports:
