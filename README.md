@@ -47,7 +47,7 @@ curl -s -X POST http://localhost:8001/plugins \
   -d name=oidc \
   -d config.client_id=web_app \
   -d config.client_secret=web_app \
-  -d config.discovery=http://${HOST_IP:8180}/auth/realms/jhipster/.well-known/openid-configuration \
+  -d config.discovery=http://${HOST_IP}:8180/auth/realms/jhipster/.well-known/openid-configuration \
   | python -mjson.tool
 ```
 
@@ -99,6 +99,6 @@ docker-compose up -d kong
 清理环境：
 ```
 docker-compose rm -s
-docker volum rm kong-oidc_keycloak-datastore kong-oidc_kong-datastore
+docker volume rm kong-oidc_keycloak-datastore kong-oidc_kong-datastore
 docker network rm kong-oidc_keycloak-net kong-oidc_kong-net
 ```

@@ -1,8 +1,7 @@
 version: '3.4'
 
 networks: 
-  kong-net:
-  keycloak-net:
+  deepmesh-net:
 
 volumes:
   kong-datastore:
@@ -12,28 +11,28 @@ services:
   kong-db:
     image: postgres:9.6
     volumes:
-      - kong-datastore:/var/lib/postgresql/data
+    - kong-datastore:/var/lib/postgresql/data
     networks:
-      - kong-net
+    - deepmesh-net
     ports:
-      - "15432:5432"
+    - "15432:5432"
     environment:
       POSTGRES_USER:     kong
       POSTGRES_DB:       kong
       POSTGRES_PASSWORD: kong
 
   kong:
-    build: .
-    # image: kong:0.14.1-centos-oidc
+    # build: .
+    image: kong:0.14.1-centos-oidc
     depends_on:
-      - kong-db
+    - kong-db
     networks:
-      - kong-net
+    - deepmesh-net
     ports:
-      - "8000:8000" # Listener
-      - "8001:8001" # Admin API
-      - "8443:8443" # Listener  (SSL)
-      - "8444:8444" # Admin API (SSL)
+    - "8000:8000" # Listener
+    - "8001:8001" # Admin API
+    - "8443:8443" # Listener  (SSL)
+    - "8444:8444" # Admin API (SSL)
     environment:
       KONG_DATABASE:         postgres
       KONG_PG_HOST:          kong-db
@@ -52,21 +51,21 @@ services:
   kong-dashboard:
     image: pgbi/kong-dashboard:v3.5.0
     depends_on:
-      - kong
+    - kong
     command: start --kong-url http://kong:8001
     networks:
-      - kong-net
+    - deepmesh-net
     ports:
-      - "8280:8080"
+    - "8280:8080"
 
   keycloak-db:
     image: postgres:9.6
     volumes: 
-      - keycloak-datastore:/var/lib/postgresql/data
+    - keycloak-datastore:/var/lib/postgresql/data
     networks:
-      - keycloak-net
+    - deepmesh-net
     ports:
-      - "25432:5432"
+    - "25432:5432"
     environment:
       POSTGRES_USER:     keycloak
       POSTGRES_DB:       keycloak
@@ -75,11 +74,11 @@ services:
   keycloak:
     image: jboss/keycloak:4.8.3.Final
     depends_on:
-      - keycloak-db
+    - keycloak-db
     networks:
-      - keycloak-net
+    - deepmesh-net
     ports:
-      - "8180:8080"
+    - "8180:8080"
     environment:
       DB_VENDOR:         POSTGRES
       DB_ADDR:           keycloak-db
@@ -90,3 +89,16 @@ services:
       KEYCLOAK_USER:     admin
       KEYCLOAK_PASSWORD: admin
       TZ:                Asia/Shanghai
+
+  nginx:
+    image: nginx:1.15.8-alpine
+    depends_on:
+    - keycloak
+    - kong-dashboard
+    networks:
+    - deepmesh-net
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d

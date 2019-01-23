@@ -732,6 +732,10 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "web_app",
       "redirectUris": [
+        "http://console.waret.net/*",
+        "http://login.waret.net/*",
+        "http://alice.waret.net/*",
+        "http://bob.waret.net/*",
         "http://localhost:8000/*",
         "http://localhost:8080/*",
         "http://localhost:8081/*",
