@@ -9,17 +9,13 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "author",
-            "fieldType": "String"
         }
     ],
-    "changelogDate": "20190111012646",
+    "changelogDate": "20190125092453",
     "dto": "no",
     "searchEngine": false,
     "service": "no",
-    "entityTableName": "book",
+    "entityTableName": "author",
     "jpaMetamodelFiltering": false,
     "pagination": "no"
 }
