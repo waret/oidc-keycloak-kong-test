@@ -2,7 +2,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   devServer: {
-    port: 8081,
+    port: 5005,
     disableHostCheck: true
   },
   configureWebpack: {

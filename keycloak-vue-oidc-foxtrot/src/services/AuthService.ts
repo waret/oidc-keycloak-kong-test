@@ -11,10 +11,10 @@ export default class AuthService {
             userStore: new WebStorageStateStore({ store: window.localStorage }),
             authority: AUTH0_DOMAIN,
             client_id: 'web_app',
-            redirect_uri: 'http://172.16.123.1:8081/callback.html',
+            redirect_uri: 'http://foxtrot.waret.net/callback.html',
             response_type: 'id_token token',
             scope: 'openid profile',
-            post_logout_redirect_uri: 'http://172.16.123.1:8081',
+            post_logout_redirect_uri: 'http://foxtrot.waret.net',
             filterProtocolClaims: true,
             metadata: {
                 issuer: AUTH0_DOMAIN,
