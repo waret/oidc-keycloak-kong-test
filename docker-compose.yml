@@ -103,3 +103,4 @@ services:
     - "443:443"
     volumes:
     - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./nginx/html:/usr/share/nginx/html
