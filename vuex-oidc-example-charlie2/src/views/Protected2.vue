@@ -3,7 +3,7 @@
     v-if="oidcIsAuthenticated"
     class="about"
   >
-    <h1>Charlie Protected: This route requires authentication</h1>
+    <h1>Charlie Protected2: This route requires authentication</h1>
     <SignedInUser />
   </div>
 </template>

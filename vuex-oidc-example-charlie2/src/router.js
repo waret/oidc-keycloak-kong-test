@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Protected from './views/Protected.vue'
+import Protected2 from './views/Protected2.vue'
 import OidcCallback from './views/OidcCallback.vue'
 import OidcCallbackError from './views/OidcCallbackError.vue'
 import { vuexOidcCreateRouterMiddleware } from 'vuex-oidc'
@@ -25,6 +26,11 @@ const router = new Router({
       path: '/protected',
       name: 'protected',
       component: Protected
+    },
+    {
+      path: '/protected2',
+      name: 'protected2',
+      component: Protected2
     },
     {
       path: '/oidc-callback', // Needs to match redirect_uri in you oidcSettings

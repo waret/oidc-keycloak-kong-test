@@ -2,9 +2,11 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/protected">Charlie</router-link> |
-      <!-- <a href="http://charlie.waret.net/protected">Charlie</a> | -->
-      <a href="http://delta.waret.net/protected">Delta</a> |
+      <router-link to="/protected">Charlie Protected</router-link> |
+      <router-link to="/protected2">Charlie Protected2</router-link> |
+      <a href="http://charlie.waret.net/protected">Charlie Protected by HREF</a> |
+      <a href="http://charlie.waret.net/protected2">Charlie Protected2 by HREF</a> |
+      <a href="http://delta.waret.net/protected">Delta Protected</a> |
       <button @click="triggerAuthenticateOidc" v-if="!oidcIsAuthenticated">Login</button>
       <button @click="signOutOidc" v-if="oidcIsAuthenticated">Logout</button>
       <router-view/>
