@@ -1,9 +1,9 @@
 module.exports = {
   devServer: {
     host: '172.16.123.1',
-    public: 'delta.waret.net',
+    public: 'charlie.waret.net',
     disableHostCheck: true,
-    port: 5003
+    port: 5002
   },
   pages: {
     app: {

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <a href="http://charlie.waret.net">Home</a> |
-      <a href="http://charlie.waret.net/protected">Charlie</a> |
+      <router-link to="/">Home</router-link> |
+      <router-link to="/protected">Charlie</router-link> |
+      <!-- <a href="http://charlie.waret.net/protected">Charlie</a> | -->
       <a href="http://delta.waret.net/protected">Delta</a> |
       <button @click="triggerAuthenticateOidc" v-if="!oidcIsAuthenticated">Login</button>
       <button @click="signOutOidc" v-if="oidcIsAuthenticated">Logout</button>

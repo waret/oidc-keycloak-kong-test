@@ -13,7 +13,6 @@
     ></textarea>
     <p>
       <button @click="authenticateOidcSilent">Reauthenticate silently</button>
-      <button @click="signOutOidc">Logout</button>
     </p>
   </div>
   <p v-else-if="oidcAuthenticationIsChecked">You are not signed in</p>
@@ -39,7 +38,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('oidcStore', ['authenticateOidcSilent', 'signOutOidc'])
+    ...mapActions('oidcStore', ['authenticateOidcSilent'])
   }
 }
 </script>

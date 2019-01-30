@@ -3,7 +3,7 @@
     v-if="oidcIsAuthenticated"
     class="about"
   >
-    <h1>This route requires authentication</h1>
+    <h1>Delta: This route requires authentication</h1>
     <SignedInUser />
   </div>
 </template>
