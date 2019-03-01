@@ -102,3 +102,10 @@ docker-compose rm -s
 docker volume rm kong-oidc_keycloak-datastore kong-oidc_kong-datastore
 docker network rm kong-oidc_keycloak-net kong-oidc_kong-net
 ```
+
+
+
+```
+helm install --namespace keycloak --set keycloak.persistence.dbVendor=postgres --set keycloak.persistence.deployPostgres=true --set keycloak.password=keycloak --set postgresql.persistence.enabled=true --name keycloak stable/keycloak
+kubectl port-forword svc ......
+```
